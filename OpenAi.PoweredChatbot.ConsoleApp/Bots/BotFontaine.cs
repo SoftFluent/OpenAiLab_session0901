@@ -2,17 +2,13 @@
 using OpenAI.Chat;
 
 namespace OpenAi.PoweredChatbot.ConsoleApp.Bots;
-internal class BotFontaine(ChatClient client) : IBot
+internal class BotFontaine(ChatClient client) : BotBase(client), IBot
 {
-    public List<ChatMessage> Messages { get; } = [];
+    public override ChatCompletionOptions Options { get; } = new ChatCompletionOptions { Temperature = 0.2f };
 
-    public ChatClient Client { get; } = client;
+    public override string Name => nameof(BotFontaine);
 
-    public ChatCompletionOptions Options { get; } = new ChatCompletionOptions { Temperature = 0.7f };
-
-    public string Name => nameof(BotFontaine);
-
-    public void InitBot()
+    public override void InitBot()
     {
         Messages.Add(new SystemChatMessage(
             "Tu es 'BotFontaine' et ton rôle est de créer des fables dans le style de Jean de La Fontaine. " +
@@ -44,12 +40,5 @@ internal class BotFontaine(ChatClient client) : IBot
             "Tu dois ensuite demander à ton interlocuteur qu'elle est la morale qu'il souhaite mettre en évidence." +
             "Puis avec ses éléments je veux que tu composes une courte poésie qui mette en scène les animaux choisies et qui illustre la morale." +
             "La poésie doit être écrite en vers et rimer."));
-    }
-
-    public string? CompleteChat(string? userMessage)
-    {
-        Messages.Add(new UserChatMessage(userMessage));
-        ClientResult<ChatCompletion> result = Client.CompleteChat(Messages, Options);
-        return result.Value?.Content[0]?.Text;
     }
 }

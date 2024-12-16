@@ -1,29 +1,17 @@
-﻿using System.ClientModel;
-using OpenAI.Chat;
+﻿using OpenAI.Chat;
 
 namespace OpenAi.PoweredChatbot.ConsoleApp.Bots;
-internal class Dumblebot(ChatClient client) : IBot
+internal class Dumblebot(ChatClient client) : BotBase(client), IBot
 {
-    public List<ChatMessage> Messages { get; } = [];
+    public override ChatCompletionOptions Options { get; } = new ChatCompletionOptions { Temperature = 0.2f };
 
-    public ChatClient Client { get; } = client;
+    public override string Name => nameof(Dumblebot);
 
-    public ChatCompletionOptions Options { get; } = new ChatCompletionOptions { Temperature = 0.7f };
-
-    public string Name => nameof(Dumblebot);
-
-    public void InitBot()
+    public override void InitBot()
     {
         // Ajouter les instructions pour que votre bot puisse proposer
         // de nouveaux sorts magiques de l'univers Harry Potter.
         // Nom du sort, mouvement à faire avec la baguette, effet du sort, etc.
         Messages.Add(new SystemChatMessage(""));
-    }
-
-    public string? CompleteChat(string? userMessage)
-    {
-        Messages.Add(new UserChatMessage(userMessage));
-        ClientResult<ChatCompletion> result = Client.CompleteChat(Messages, Options);
-        return result.Value?.Content[0]?.Text;
     }
 }

@@ -2,6 +2,7 @@
 using Azure.AI.OpenAI;
 using Microsoft.Extensions.Configuration;
 using OpenAi.PoweredChatbot.ConsoleApp;
+using OpenAi.PoweredChatbot.ConsoleApp.Bots;
 using OpenAI.Chat;
 
 IConfiguration configuration = new ConfigurationBuilder()
@@ -47,9 +48,10 @@ while (true)
 static void StartBot(IBot bot)
 {
     bot.InitBot();
-    ConsoleHelper.WriteAsChatbot($"Discuter avec l'assistant '{bot.Name}'.");
-    ConsoleHelper.WriteAsChatbot($"Taper 'Quit' pour changer de bot.");
-    ConsoleHelper.WriteAsChatbot($"Taper 'Ctrl + C' pour quitter le programme.");
+    ConsoleHelper.WriteAsChatbot($"Discuter avec l'assistant '{bot.Name}'." + Environment.NewLine +
+    $"  Taper 'Quit' pour changer de bot." + Environment.NewLine + 
+    $"  Taper 'Ctrl + C' pour quitter le programme.");
+
     while (true)
     {
         string? userMessage = Console.ReadLine();
