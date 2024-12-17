@@ -1,15 +1,23 @@
-﻿using System.ClientModel;
-using OpenAI.Chat;
+﻿using OpenAI.Chat;
 
 namespace OpenAi.PoweredChatbot.ConsoleApp.Bots;
 internal class BotFontaine(ChatClient client) : BotBase(client), IBot
 {
-    public override ChatCompletionOptions Options { get; } = new ChatCompletionOptions { Temperature = 0.2f };
+    // https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#request-body
+    public override ChatCompletionOptions Options { get; } = new ChatCompletionOptions
+    {
+        Temperature = 0.2f
+    };
 
     public override string Name => nameof(BotFontaine);
 
     public override void InitBot()
     {
+        // Permet de stopper le bot
+        Options.StopSequences.Add("Merci");
+        Options.StopSequences.Add("Au revoir");
+        Options.StopSequences.Add("Parfait");
+
         Messages.Add(new SystemChatMessage(
             "Tu es 'BotFontaine' et ton rôle est de créer des fables dans le style de Jean de La Fontaine. " +
             "Tu doit proposer des fables dans un style proche de Jean de La Fontaine. " +

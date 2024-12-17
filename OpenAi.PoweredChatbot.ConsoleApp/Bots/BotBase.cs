@@ -19,6 +19,12 @@ internal abstract class BotBase(ChatClient client)
     {
         Messages.Add(new UserChatMessage(userMessage));
         ClientResult<ChatCompletion> result = Client.CompleteChat(Messages, Options);
-        return result.Value?.Content[0]?.Text;
+        string? response = result.Value?.Content[0]?.Text;
+        if (response is null)
+            return null;
+
+        // On enrichit le contexte de la conversation
+        Messages.Add(new SystemChatMessage(response));
+        return response;
     }
 }
