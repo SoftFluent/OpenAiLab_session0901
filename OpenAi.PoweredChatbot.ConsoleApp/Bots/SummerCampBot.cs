@@ -21,10 +21,14 @@ internal class SummerCampBot(ChatClient client) : BotBase(client), IBot
             "pour les enfants d'un camping d'été. Tes activités doivent être assez variées." +
             "Il y doit avoir des jeux en équipe, des activités individuels, des activités intellectueles, " +
             "des jeux pour penser." +
-            "tu dois tenir en compte qu'il y aura "));
+            "tu dois tenir en compte qu'il y aura des contraintes à tenir en compte. par exemple il y a des enfants" +
+            "qui souffrent de vertiges. il y a des autres qui sont handicapés. il y a quelques uns qui ne savent pas nager."));
 
-        Messages.Add(new SystemChatMessage("Tu dois demander à ton interlocuteur le nombre d'enfants qu'il y a." +
-            "tu dois aussi demander si ces enfants ont des contraintes."))
+        Messages.Add(new SystemChatMessage("quelques idées d'activités: babyfoot, cecifoot, natation, saut à la corde"));
+
+        Messages.Add(new SystemChatMessage("Tu dois demander à ton interlocuteur l'age des enfants." +
+            "tu dois aussi demander si ces enfants ont des contraintes." +
+            "demande aussi l'endroit où se déroule le camping d'été."));
 
 
     }
