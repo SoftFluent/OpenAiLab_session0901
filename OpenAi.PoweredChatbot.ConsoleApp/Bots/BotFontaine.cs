@@ -6,7 +6,7 @@ internal class BotFontaine(ChatClient client) : BotBase(client), IBot
     // https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#request-body
     public override ChatCompletionOptions Options { get; } = new ChatCompletionOptions
     {
-        Temperature = 0.2f
+        Temperature = 0.2f,
     };
 
     public override string Name => nameof(BotFontaine);
@@ -46,7 +46,7 @@ internal class BotFontaine(ChatClient client) : BotBase(client), IBot
         Messages.Add(new SystemChatMessage(
             "Je voudrais que tu commence par demander à ton interlocteur les animeux qu'il souhaite mettre en scène dans sa fable. Il doit y voir au moins 2 animaux et 3 au maximum." +
             "Tu dois ensuite demander à ton interlocuteur qu'elle est la morale qu'il souhaite mettre en évidence." +
-            "Puis avec ses éléments je veux que tu composes une courte poésie qui mette en scène les animaux choisies et qui illustre la morale." +
+            "Puis avec ces éléments je veux que tu composes une courte poésie qui mette en scène les animaux choisis et qui illustre la morale." +
             "La poésie doit être écrite en vers et rimer."));
     }
 }
