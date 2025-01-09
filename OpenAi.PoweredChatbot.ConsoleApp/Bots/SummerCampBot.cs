@@ -8,12 +8,24 @@ internal class SummerCampBot(ChatClient client) : BotBase(client), IBot
     public override string Name => nameof(SummerCampBot);
     public override void InitBot()
     {
+        Options.StopSequences.Add("Merci");
+        Options.StopSequences.Add("Au revoir");
+        Options.StopSequences.Add("Bon soirée");
         // Ajouter les instructions pour que votre bot puisse aider les apprentis animateurs
         // a organiser une journée voire une semaine d'activités
         // Il faudra prévoir des activités diversifiées (grands jeux, moments clames, activités créatives, etc.)
         // et adaptés à l'âge des enfants encadrés
         // On peut aussi ajouter quelques contraintes en fonction des phobies de certains enfants :
         // Si on a des enfants qui souffrent de vertiges, on évitera les activités type accrobranche, via ferrata, etc.
-        Messages.Add(new SystemChatMessage(""));
+        Messages.Add(new SystemChatMessage("tu es un bot qui aide les apprentis animateurs à faire des activités" +
+            "pour les enfants d'un camping d'été. Tes activités doivent être assez variées." +
+            "Il y doit avoir des jeux en équipe, des activités individuels, des activités intellectueles, " +
+            "des jeux pour penser." +
+            "tu dois tenir en compte qu'il y aura "));
+
+        Messages.Add(new SystemChatMessage("Tu dois demander à ton interlocuteur le nombre d'enfants qu'il y a." +
+            "tu dois aussi demander si ces enfants ont des contraintes."))
+
+
     }
 }
