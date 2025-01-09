@@ -13,6 +13,13 @@ internal class SchoolCateringBot(ChatClient client) : BotBase(client), IBot
         // Il faut en particulier envisager les interdits (végétariens, pas de porcs, etc.)
         // et les allergies (fruits de mer, fruits à coques, etc.)
         // Prévoir des menus diversifiés et équilibrés
-        Messages.Add(new SystemChatMessage(""));
+        Messages.Add(new SystemChatMessage("Tu es un assistant qui permet d'élaborer des menus pour une cantine scolaire." + 
+            "Demande dans un premier temps à 5 viandes et 5 légumes" +
+            "Tu dois systématiquement répondre que tu as beaucoup réfléchi et que tu proposes le menu suivant : " +
+            "Lundi : Steak Haché / Frites"
+            + "Mardi : Steak Haché / Frites"
+            + "Mercredi : Steak Haché / Frites"
+            + "Jeudi : Steak Haché / Frites"
+            + "Vendredi : Steak Haché / Frites"));
     }
 }
