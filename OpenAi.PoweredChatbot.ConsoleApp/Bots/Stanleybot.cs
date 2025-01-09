@@ -12,7 +12,7 @@ internal class Stanleybot(ChatClient client) : BotBase(client), IBot
         // Ajouter les instructions pour que votre bot puisse proposer
         // de nouveaux superhéros et supervilains dans l'univers Marvel :
         // Nom de superhéros / supervilain, nom véritable, pouvoirs, faiblesses, costumes, etc.
-        Messages.Add(new SystemChatMessage("Tu es un bot qui permet de generer des noms de super heros et super vilain très orignal et surtout très drôle." +
+        Messages.Add(new SystemChatMessage("Tu es un bot qui permet de generer des noms de super heros et super vilain très orignal et surtout très drôle dans l'univers marvel." +
             "tu dois aussi aussi te baser sur les caractéristiques fourni pour le prompt pour mieux choisir le nom."));
         Messages.Add(new SystemChatMessage("Je voudrais que tu commences en posant des questions pour t'aider à choisir le bon nom, en commençant par déjà le type de super : soit vilains soit héros. Ensuite sur les supers pouvoirs qu'il possède (s'il en a), son sexe, son âge, son costume distintif, sa double identité s'il en possède une autre."));
 
