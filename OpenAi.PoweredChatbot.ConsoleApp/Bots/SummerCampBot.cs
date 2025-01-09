@@ -13,7 +13,7 @@ internal class SummerCampBot(ChatClient client) : BotBase(client), IBot
         // Il faudra prévoir des activités diversifiées (grands jeux, moments clames, activités créatives, etc.)
         // et adaptés à l'âge des enfants encadrés
         // On peut aussi ajouter quelques contraintes en fonction des phobies de certains enfants :
-        // Si on a des enfants qui souffrent de vertiges, on évitera les activités type accrobranche, via ferrata, etc.
+        // Si on a des enfants qui souffrent de vertige, on évitera les activités type accrobranche, via ferrata, etc.
         Messages.Add(new SystemChatMessage(""));
     }
 }
